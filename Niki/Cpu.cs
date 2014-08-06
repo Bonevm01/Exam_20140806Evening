@@ -3,94 +3,40 @@ using System;
 namespace Computers
 {
 
-    class Cpu
+    internal class Cpu
     {
         private readonly byte numberOfBits;
-
-        private readonly RamMemory ram;
-
-        private readonly VideoCard videoCard;
-
+        byte NumberOfCores { get; set; }
         static readonly Random Random = new Random();
 
-        internal Cpu(byte numberOfCores, byte numberOfBits, RamMemory ram, VideoCard videoCard)
+        internal Cpu(byte numberOfCores, byte numberOfBits)
         {
             this.numberOfBits = numberOfBits;
-            this.ram = ram;
             this.NumberOfCores = numberOfCores;
-            this.videoCard = videoCard;
         }
 
-        byte NumberOfCores { get; set; }
-
-        public void SquareNumber()
+        public int ReturnSquareNumber(RamMemory ram)
         {
-            if (this.numberOfBits == 32) SquareNumber32();
-            if (this.numberOfBits == 64) SquareNumber64();
-        }
-
-        void SquareNumber32()
-        {
-            var data = this.ram.LoadValue();
+            var data = ram.LoadValue();
             if (data < 0)
             {
-                this.videoCard.Draw("Number too low.");
+                throw new SmallNumberException("The random umber is too small");
             }
-            else if (data > 500)
+            else if ((this.numberOfBits == 32 && data > 500) || (this.numberOfBits == 64 && data > 1000))
             {
-                this.videoCard.Draw("Number too high.");
+                throw new BigNumbersException("The random number is too high");
             }
             else
             {
-                int value = 0;
-                for (int i = 0; i < data; i++)
-                {
-                    value += data;
-                }
-                this.videoCard.Draw(string.Format("Square of {0} is {1}.", data, value));
+                return data * data;
             }
         }
 
-        void SquareNumber64()
+        internal int GenerateRandomNumber()
         {
-            var data = this.ram.LoadValue();
-            if (data < 0)
-            {
-                this.videoCard.Draw("Number too low.");
-            }
-            else if (data > 1000)
-            {
-                this.videoCard.Draw("Number too high.");
-            }
-            else
-            {
-                int value = 0;
-                for (int i = 0; i < data; i++)
-                {
-                    value += data;
-                }
-                this.videoCard.Draw(string.Format("Square of {0} is {1}.", data, value));
-            }
-        }
+            int randomNumber = Random.Next(1, 10);
 
-        internal void rand(int a, int b)
-        {
-            int randomNumber;
-            do
-            {
-                randomNumber = Random.Next(0, 1000);
-            }
-            while (!(randomNumber >= a && randomNumber <= b));
-            this.ram.SaveValue(randomNumber);
+            return randomNumber;
         }
     }
-
-    //class Laptop
-    //{
-    //    private static void Main()
-    //    {
-    //        Computers computers = new Computers();
-    //        Computers.main();
-    //    }
-    //}
 }

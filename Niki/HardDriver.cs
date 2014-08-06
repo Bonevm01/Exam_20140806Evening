@@ -5,88 +5,41 @@ using System.Linq;
 namespace Computers
 {
 
-    class HardDriver
+    internal class HardDriver : IHardDrive
     {
-
-        bool isInRaid;
-        int hardDrivesInRaid;
-
-        // SortedDictionary<int, string> info;
+        internal int capacity;
+        Dictionary<int, string> data;
 
         internal HardDriver()
         {
+            this.data = new Dictionary<int, string>();
         }
 
-        List<HardDriver> hds;
-
-        internal HardDriver(int capacity, bool isInRaid, int hardDrivesInRaid)
+        internal HardDriver(int capacity)
         {
-            this.isInRaid = isInRaid;
-            this.hardDrivesInRaid = hardDrivesInRaid;
             this.capacity = capacity;
-            this.data = new Dictionary<int, string>(capacity);
-            this.hds = new List<HardDriver>();
         }
 
-        int capacity;
-        Dictionary<int, string> data;
-        internal HardDriver(int capacity, bool isInRaid, int hardDrivesInRaid, List<HardDriver> hardDrives)
-        {
-            this.isInRaid = isInRaid;
-            this.hardDrivesInRaid = hardDrivesInRaid;
-            this.capacity = capacity;
-            this.data = (Dictionary<int, string>)new Dictionary<int, string>(capacity);
-            this.hds = new List<HardDriver>();
-            this.hds = hardDrives;
-        }
 
         int Capacity
         {
             get
             {
-                if (isInRaid)
-                {
-                    if (!this.hds.Any())
-                    {
-                        return 0;
-                    }
-                    return this.hds.First().Capacity;
-                }
-                else
-                {
-                    return capacity;
-                }
+                return this.capacity;
             }
         }
 
-        void SaveData(int addr, string newData)
+        public void SaveData(int addr, string newData)
         {
-            if (isInRaid) 
-            { 
-                foreach (var hardDrive in this.hds) hardDrive.SaveData(addr, newData); 
-            } 
-            else
-            { 
-                this.data[addr] = newData;
-            }
+
+            this.data.Add(addr, newData);
         }
 
-        string LoadData(int address)
+        public string LoadData(int address)
         {
-            if (isInRaid)
-            {
-                if (!this.hds.Any())
-                {
-                    throw new OutOfMemoryException("No hard drive in the RAID array!");
-                }
-
-                return this.hds.First().LoadData(address);
-            }
-            else if (true)
-            {
-                return this.data[address];
-            }
+            return this.data[address];
         }
+
     }
 
 }

@@ -1,8 +1,8 @@
 ﻿namespace Computers
 {
-    class RamMemory
+    internal class RamMemory
     {
-        int value;
+        internal int value;
         internal RamMemory(int a)
         {
             Amount = a;
