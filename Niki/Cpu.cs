@@ -1,19 +1,19 @@
-﻿
-using System;
-namespace Computers
+﻿namespace Computers
 {
+    using System;
 
     internal class Cpu
     {
+private static readonly Random Random = new Random();
         private readonly byte numberOfBits;
-        byte NumberOfCores { get; set; }
-        static readonly Random Random = new Random();
 
         internal Cpu(byte numberOfCores, byte numberOfBits)
         {
             this.numberOfBits = numberOfBits;
             this.NumberOfCores = numberOfCores;
         }
+
+        internal byte NumberOfCores { get; set; }
 
         public int ReturnSquareNumber(RamMemory ram)
         {

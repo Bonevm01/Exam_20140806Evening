@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Computers
+﻿namespace Computers
 {
+    using System;
+    using System.Collections.Generic;
+
     internal class RaidOfHD : IHardDrive
     {
-        IList<HardDriver> ListOfHD;
-
         internal RaidOfHD()
         {
             this.ListOfHD = new List<HardDriver>();
         }
 
-        internal void AddHD(HardDriver HD)
-        {
-            this.ListOfHD.Add(HD);
-        }
+        internal IList<HardDriver> ListOfHD { get; set; }
 
-        int Capacity
+        internal int Capacity
         {
             get
             {
@@ -30,7 +22,7 @@ namespace Computers
                 }
                 else
                 {
-                    return this.ListOfHD[0].capacity;
+                    return this.ListOfHD[0].Capacity;
                 }
             }
         }
@@ -64,6 +56,11 @@ namespace Computers
             {
                 return this.ListOfHD[0].LoadData(address);
             }
+        } 
+        
+        internal void AddHD(HardDriver hardDrive)
+        {
+            this.ListOfHD.Add(hardDrive);
         }
     }
 }

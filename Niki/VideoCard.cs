@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Computers
+﻿namespace Computers
 {
-    class VideoCard
+    using System;
+
+    internal class VideoCard
     {
         public bool IsMonochrome { get; set; }
 
@@ -14,12 +10,11 @@ namespace Computers
         {
             if (this.IsMonochrome)
             {
-                PrintMessage(ConsoleColor.Gray, message);
+                this.PrintMessage(ConsoleColor.Gray, message);
             }
-
             else
             {
-                PrintMessage(ConsoleColor.Green, message);
+                this.PrintMessage(ConsoleColor.Green, message);
             }
         }
 

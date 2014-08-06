@@ -2,24 +2,24 @@
 {
     internal class Battery
     {
-        internal int PowerLeft { get; set; }
-
         internal Battery()
         {
             this.PowerLeft = 50;
         }
 
+        internal int PowerLeft { get; set; }
+
         internal void Charge(int newCharge)
         {
-            PowerLeft += newCharge;
-            if (PowerLeft > 100)
+            this.PowerLeft += newCharge;
+            if (this.PowerLeft > 100)
             {
-                PowerLeft = 100;
+                this.PowerLeft = 100;
             }
 
-            if (PowerLeft < 0)
+            if (this.PowerLeft < 0)
             {
-                PowerLeft = 0;
+                this.PowerLeft = 0;
             }
         }
     }

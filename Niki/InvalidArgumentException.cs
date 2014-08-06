@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Computers
+﻿namespace Computers
 {
-    class InvalidArgumentException : ArgumentException
+    using System;
+
+    internal class InvalidArgumentException : ArgumentException
     {
         public InvalidArgumentException(string message)
             : base(message)

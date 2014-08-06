@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Computers
+﻿namespace Computers
 {
-    class Dell : Manifacturer
+    internal class Dell : Manifacturer
     {
         public Dell()
         {

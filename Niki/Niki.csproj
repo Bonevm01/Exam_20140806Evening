@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="AbstractComputer.cs" />
     <Compile Include="BigNumbersException.cs" />
-    <Compile Include="Computer.cs" />
     <Compile Include="Cpu.cs" />
     <Compile Include="Dell.cs" />
     <Compile Include="HardDriver.cs" />
@@ -64,7 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="SmallNumberException.cs" />
-    <Compile Include="Type.cs" />
     <Compile Include="VideoCard.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Computers
+﻿namespace Computers
 {
+    using System.Collections.Generic;
 
     internal class HardDriver : IHardDrive
     {
-        internal int capacity;
-        Dictionary<int, string> data;
+        private int capacity;
+
+        private Dictionary<int, string> data;
 
         internal HardDriver()
         {
@@ -20,8 +18,7 @@ namespace Computers
             this.capacity = capacity;
         }
 
-
-        int Capacity
+        internal int Capacity
         {
             get
             {
@@ -31,7 +28,6 @@ namespace Computers
 
         public void SaveData(int addr, string newData)
         {
-
             this.data.Add(addr, newData);
         }
 
@@ -39,7 +35,5 @@ namespace Computers
         {
             return this.data[address];
         }
-
     }
-
 }

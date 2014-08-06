@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Computers
+﻿namespace Computers
 {
-    class Computers
+    using System;
+
+    internal class Computers
     {
         // static Computer pc, laptop, server;
         public static void Main()
@@ -53,9 +52,9 @@ namespace Computers
                 var commandValue = int.Parse(cp[1]);
                 if (commandName == "Charge")
                 {
-                    laptop.battery.Charge(commandValue);
-                    string message = string.Format("Battery status: {0}%", laptop.battery.PowerLeft);
-                    laptop.motherBoard.DrawOnVideoCard(message);
+                    laptop.Battery.Charge(commandValue);
+                    string message = string.Format("Battery status: {0}%", laptop.Battery.PowerLeft);
+                    laptop.MotherBoard.DrawOnVideoCard(message);
                 }
                 else if (commandName == "Process")
                 {
@@ -67,8 +66,7 @@ namespace Computers
                 }
             }
 
-            //Wait user input
-            Console.Read();
+            Console.Read(); // Whait Enter to finish the run
         }
     }
 }

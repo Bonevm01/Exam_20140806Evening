@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Computers
+﻿namespace Computers
 {
+    using System;
 
-    class BigNumbersException : Exception
+    internal class BigNumbersException : Exception
     {
         public BigNumbersException(string message)
             : base(message)
         {
         }
     }
-
 }

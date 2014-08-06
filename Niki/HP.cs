@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Computers
+﻿namespace Computers
 {
-    class HP : Manifacturer
+    internal class HP : Manifacturer
     {
-
         public HP()
         {
             this.Name = "HP";

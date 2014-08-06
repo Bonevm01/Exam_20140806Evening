@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Computers
+﻿namespace Computers
 {
-    class MotherBoard : IMotherboard
+    internal class MotherBoard : IMotherboard
     {
-        internal Cpu CPU;
-        internal RamMemory Ram;
-        internal VideoCard VideoCard;
-
         public MotherBoard(Cpu cpu, RamMemory ram, VideoCard videoCard)
         {
             this.CPU = cpu;
@@ -19,6 +9,11 @@ namespace Computers
             this.VideoCard = videoCard;
         }
 
+        internal Cpu CPU { get; set; }
+
+        internal RamMemory Ram { get; set; }
+
+        internal VideoCard VideoCard { get; set; }
 
         public int LoadRamValue()
         {
@@ -40,17 +35,17 @@ namespace Computers
         {
             try
             {
-                var data = LoadRamValue();
-                var squareNumber = this.CPU.ReturnSquareNumber(Ram);
-                DrawOnVideoCard(string.Format("Square of {0} is {1}.", data, squareNumber));
+                var data = this.LoadRamValue();
+                var squareNumber = this.CPU.ReturnSquareNumber(this.Ram);
+                this.DrawOnVideoCard(string.Format("Square of {0} is {1}.", data, squareNumber));
             }
             catch (BigNumbersException)
             {
-                DrawOnVideoCard("Number too high.");
+                this.DrawOnVideoCard("Number too high.");
             }
             catch (SmallNumberException)
             {
-                DrawOnVideoCard("Number too low.");
+                this.DrawOnVideoCard("Number too low.");
             }
         }
     }

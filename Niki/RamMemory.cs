@@ -2,22 +2,23 @@
 {
     internal class RamMemory
     {
-        internal int value;
-        internal RamMemory(int a)
+        private int value;
+
+        internal RamMemory(int ram)
         {
-            Amount = a;
+            this.Amount = ram;
         }
 
-        int Amount{ get; set; }
+        internal int Amount { get; set; }
 
         public void SaveValue(int newValue)
         {
-            value = newValue;
+            this.value = newValue;
         }
 
         public int LoadValue()
         {
-            return value;
+            return this.value;
         }
     }
 }

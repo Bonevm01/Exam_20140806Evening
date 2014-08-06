@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace Computers
+﻿namespace Computers
 {
-    class SmallNumberException : Exception
+    using System;
+
+    internal class SmallNumberException : Exception
     {
         public SmallNumberException(string message)
             : base(message)
