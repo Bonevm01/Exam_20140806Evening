@@ -1,22 +1,27 @@
 ﻿
-using Computers1;using Computers11;using System;
-using Computers8;namespace Computers4
+using Computers1;
+using Computers11;
+using System;
+using Computers8;
+namespace Computers4
 {
 
     class Cpu
     {
         private readonly byte numberOfBits;
 
-        private readonly Rammstein ram;
+        private readonly RamMemory ram;
 
         private readonly HardDriver videoCard;
 
         static readonly Random Random = new Random();
 
-        internal Cpu(byte numberOfCores, byte numberOfBits, Rammstein ram, HardDriver videoCard) {
+        internal Cpu(byte numberOfCores, byte numberOfBits, RamMemory ram, HardDriver videoCard)
+        {
             this.numberOfBits = numberOfBits;
             this.ram = ram;
             this.NumberOfCores = numberOfCores;
+            this.videoCard = videoCard;
         }
 
         byte NumberOfCores { get; set; }
