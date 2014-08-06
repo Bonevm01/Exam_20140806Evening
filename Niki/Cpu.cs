@@ -4,7 +4,7 @@
 
     internal class Cpu
     {
-private static readonly Random Random = new Random();
+        private static readonly Random Random = new Random();
         private readonly byte numberOfBits;
 
         internal Cpu(byte numberOfCores, byte numberOfBits)

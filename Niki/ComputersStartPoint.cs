@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal class Computers
+    internal class ComputersStartPoint
     {
         // static Computer pc, laptop, server;
         public static void Main()

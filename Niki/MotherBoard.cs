@@ -22,7 +22,6 @@
 
         public void SaveRamValue(int value)
         {
-            // int value = this.CPU.GenerateRandomNumber();
             this.Ram.SaveValue(value);
         }
 

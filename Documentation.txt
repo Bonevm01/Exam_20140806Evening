@@ -1,41 +1,38 @@
 Design pattern: Simple Factory
-	* 
+	You can choose the name of the producer by keybord input.
 
 Design pattern: Strategy
-	* 
+	ProdueLaptop; ProducePC and ProduceServer 
 
 Design pattern: Template Method
-	* 
+	Producer - HP/Dell/Lenovo
 
 Design pattern: Abstract factory
-	* 
-
+	In the main method you could change the computerProducer by choice from keybord and as a result you have different products
+	All computerProducers have mothods ProduceLaptop; produce PC and produce Server
 Design pattern: Composite
-	* 
+	HardDrive and RaidOfHD are threated as one - they have the same methods inherited by IHardDrive
 
 Design pattern: Mediator
-	* 
+	Mother board is mediator for RAM, CPU and VideoCard
 
 Found bottlenecks:
-	* 
-	* 
+	Calculating squarenumber with for loop + I don't remember but there is no bottle neck now
 
 Found bugs:
-	* 
-	* 
-	* 
+All bugs are fixed and the code is properly runing. I don't remember exactly but Main method was written as main; delete continue command; and there was a bug in the constructor of CPU/VideoCArd 
 
 Single responsibility principle
-	* 
+	Fullfiled
 
 Open/closed principle
-	* 
+You could add new classes without changing existing ones
 
 Liskov substitution principle
-	* 
+	Fullfiled - now properties and fields limited in the child classes
 
 Interface segregation principle
-	* 
+	Fullfiled - IHardDrive, IMotherBoard
 
 Dependency inversion principle
-	* 
+	Fullfiled - CPU method ReturnSquareNumber has argument RAM
