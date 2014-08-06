@@ -1,56 +1,52 @@
-﻿
-using Computers1;
-using Computers11;
-using Computers4;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Computers8
+namespace Computers
 {
     class Computers
     {
         static Computer pc, laptop, server;
-        public static void main()
+        public static void Main()
         {
             var manufacturer = Console.ReadLine();
             if (manufacturer == "HP")
             {
                 var ram = new RamMemory(Eight / 4);
-                var videoCard = new HardDriver()
+                var videoCard = new VideoCard()
                 {
                     IsMonochrome = false
                 };
 
-                pc = new Computer(Computers.Type.PC, new Cpu(Eight / 4, 32, ram, videoCard), ram, new[] { new HardDriver(500, false, 0) }, videoCard, null);
+                pc = new Computer(Type.PC, new Cpu(Eight / 4, 32, ram, videoCard), ram, new[] { new HardDriver(500, false, 0) }, videoCard, null);
 
                 var serverRam = new RamMemory(Eight * 4);
-                var serverVideo = new HardDriver();
-                server = new Computer(Computers.Type.SERVER, new Cpu(Eight / 2, 32, serverRam, serverVideo), serverRam,
+                var serverVideo = new VideoCard();
+                server = new Computer(Type.SERVER, new Cpu(Eight / 2, 32, serverRam, serverVideo), serverRam,
                     new List<HardDriver>{new HardDriver(0, true, 2, new List<HardDriver> { new HardDriver(1000, false, 0),
                         new HardDriver(1000, false, 0) })}, serverVideo, null);
                 {
-                    var card = new HardDriver()
+                    var card = new VideoCard()
                     {
                         IsMonochrome = false
                     };
                     var ram1 = new RamMemory(Eight / 2);
-                    laptop = new Computer(Computers.Type.LAPTOP, new Cpu(Eight / 4, 64, ram1, card), ram1,
+                    laptop = new Computer(Type.LAPTOP, new Cpu(Eight / 4, 64, ram1, card), ram1,
                         new[] { new HardDriver(500, false, 0) }, card, new LaptopBattery());
                 }
             }
             else if (manufacturer == "Dell")
             {
                 var ram = new RamMemory(Eight);
-                var videoCard = new HardDriver() { IsMonochrome = false };
-                pc = new Computer(Computers.Type.PC, new Cpu(Eight / 2, 64, ram, videoCard), ram, new[] { new HardDriver(1000, false, 0) }, videoCard, null);
+                var videoCard = new VideoCard(); // { IsMonochrome = false };
+                pc = new Computer(Type.PC, new Cpu(Eight / 2, 64, ram, videoCard), ram, new[] { new HardDriver(1000, false, 0) }, videoCard, null);
                 var ram1 = new RamMemory(Eight * Eight);
-                var card = new HardDriver();
-                server = new Computer(Computers.Type.SERVER, new Cpu(Eight, 64, ram1, card), ram1,
+                var card = new VideoCard();
+                server = new Computer(Type.SERVER, new Cpu(Eight, 64, ram1, card), ram1,
                      new List<HardDriver>{new HardDriver(0, true, 2, new List<HardDriver> { new HardDriver(2000, false, 0), 
                          new HardDriver(2000, false, 0) })}, card, null);
                 var ram2 = new RamMemory(Eight);
-                var videoCard1 = new HardDriver() { IsMonochrome = false };
-                laptop = new Computer(Computers.Type.LAPTOP, new Cpu(Eight / 2, ((32)), ram2, videoCard1),
+                var videoCard1 = new VideoCard() { IsMonochrome = false };
+                laptop = new Computer(Type.LAPTOP, new Cpu(Eight / 2, ((32)), ram2, videoCard1),
                     ram2, new[] { new HardDriver(1000, false, 0) }, videoCard1, new LaptopBattery());
             }
             else
@@ -60,125 +56,110 @@ namespace Computers8
 
             while (true)
             {
-                var c = Console.ReadLine();
-                if (c == null)
+                var command = Console.ReadLine();
+                if (command == null)
                 {
-                    break; //goto end;
+                    break; 
                 }
 
-                if (c.StartsWith("Exit"))
+                if (command.StartsWith("Exit"))
                 {
-                    break;//goto end;
+                    break;
                 }
 
-                var cp = c.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var cp = command.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 if (cp.Length != 2)
                 {
                     {
                         throw new ArgumentException("Invalid command!");
                     }
                 }
-                //#warning "This code sucks"
-                var cn = cp[0];
-                var ca = int.Parse(cp[1]);
+                
+                var commandName = cp[0];
+                var commandValue = int.Parse(cp[1]);
 
 
 
-                if (cn == "Charge")
+                if (commandName == "Charge")
                 {
-                    laptop.ChargeBattery(ca);
+                    laptop.ChargeBattery(commandValue);
                 }
-                else if (cn == "Process")
+                else if (commandName == "Process")
                 {
-                    server.Process(ca);
+                    server.Process(commandValue);
                 }
-                else if (cn == "Play")
+                else if (commandName == "Play")
                 {
-                    pc.Play(ca);
+                    pc.Play(commandValue);
                 }
-                continue;
+
                 Console.WriteLine("Invalid command!");
             }
-
-            //end:
-            //    ;
 
             //Wait user input
             Console.ReadLine();
         }
 
-        class Computer
-        {
-            IEnumerable<HardDriver> HardDrives { get; set; }
-            HardDriver VideoCard { get; set; }
-            [Obsolete("")]
-            internal void ChargeBattery(int percentage)
-            {
-                battery.Charge(percentage);
-                VideoCard.Draw(string.Format("Battery status: {0}", battery.Percentage));
-            }
+        //class Computer
+        //{
+        //    IEnumerable<HardDriver> HardDrives { get; set; }
+        //    HardDriver VideoCard { get; set; }
+        //    [Obsolete("")]
+        //    internal void ChargeBattery(int percentage)
+        //    {
+        //        battery.Charge(percentage);
+        //        VideoCard.Draw(string.Format("Battery status: {0}", battery.Percentage));
+        //    }
 
-            Cpu Cpu { get; set; }
-            readonly LaptopBattery battery;
-            RamMemory Ram { get; set; }
+        //    Cpu Cpu { get; set; }
+        //    readonly LaptopBattery battery;
+        //    RamMemory Ram { get; set; }
 
-            public void Play(int guessNumber)
-            {
-                Cpu.rand(1, 10);
-                var number = Ram.LoadValue();
-                if (number != guessNumber)
-                {
-                    VideoCard.Draw(string.Format("You didn't guess the number {0}.", number));
-                }
-                else
-                {
-                    VideoCard.Draw("You win!");
-                }
-            }
+        //    public void Play(int guessNumber)
+        //    {
+        //        Cpu.rand(1, 10);
+        //        var number = Ram.LoadValue();
+        //        if (number != guessNumber)
+        //        {
+        //            VideoCard.Draw(string.Format("You didn't guess the number {0}.", number));
+        //        }
+        //        else
+        //        {
+        //            VideoCard.Draw("You win!");
+        //        }
+        //    }
 
-            internal Computer(Computers.Type type, Cpu cpu, RamMemory ram, IEnumerable<HardDriver> hardDrives, HardDriver videoCard, LaptopBattery battery)
-            {
-                Cpu = cpu;
-                Ram = ram;
-                HardDrives = hardDrives;
-                VideoCard = videoCard;
-                if (type != Type.LAPTOP && type != Type.PC)
-                {
-                    VideoCard.IsMonochrome = true;
-                }
+        //    internal Computer(Computers.Type type, Cpu cpu, RamMemory ram, IEnumerable<HardDriver> hardDrives, HardDriver videoCard, LaptopBattery battery)
+        //    {
+        //        Cpu = cpu;
+        //        Ram = ram;
+        //        HardDrives = hardDrives;
+        //        VideoCard = videoCard;
+        //        if (type != Type.LAPTOP && type != Type.PC)
+        //        {
+        //            VideoCard.IsMonochrome = true;
+        //        }
 
-                this.battery = battery;
-            }
+        //        this.battery = battery;
+        //    }
 
-            internal void Process(int data)
-            {
-                Ram.SaveValue(data);
-                // TODO: Fix it
-                Cpu.SquareNumber();
-            }
-        }
+        //    internal void Process(int data)
+        //    {
+        //        Ram.SaveValue(data);
+        //        // TODO: Fix it
+        //        Cpu.SquareNumber();
+        //    }
+        //}
 
-        public class InvalidArgumentException : ArgumentException
-        {
-            public InvalidArgumentException(string message)
-                : base(message)
-            { }
-        }
+        //public class InvalidArgumentException : ArgumentException
+        //{
+        //    public InvalidArgumentException(string message)
+        //        : base(message)
+        //    { 
+        //    }
+        //}
 
         const int Eight = 8;
-        public enum Type
-        {
-            PC, LAPTOP, SERVER,
-        }
 
-        #region Region
-        interface IMotherboard
-        {
-            int LoadRamValue();
-            void SaveRamValue(int value);
-            void DrawOnVideoCard(string data);
-        }
-
-        #endregion
     }
 }

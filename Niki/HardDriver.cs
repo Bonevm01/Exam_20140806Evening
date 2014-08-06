@@ -1,10 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using C = System.Console;
 
-namespace Computers11
+namespace Computers
 {
 
     class HardDriver
@@ -13,14 +11,11 @@ namespace Computers11
         bool isInRaid;
         int hardDrivesInRaid;
 
-        SortedDictionary<int, string> info;
+        // SortedDictionary<int, string> info;
 
         internal HardDriver()
         {
         }
-
-        public bool IsMonochrome { get; set; }
-
 
         List<HardDriver> hds;
 
@@ -66,7 +61,14 @@ namespace Computers11
 
         void SaveData(int addr, string newData)
         {
-            if (isInRaid) foreach (var hardDrive in this.hds) hardDrive.SaveData(addr, newData); else this.data[addr] = newData;
+            if (isInRaid) 
+            { 
+                foreach (var hardDrive in this.hds) hardDrive.SaveData(addr, newData); 
+            } 
+            else
+            { 
+                this.data[addr] = newData;
+            }
         }
 
         string LoadData(int address)
@@ -85,25 +87,6 @@ namespace Computers11
                 return this.data[address];
             }
         }
-
-        public void Draw(string a)
-        {
-            if (this.IsMonochrome)
-            {
-                C.ForegroundColor = ConsoleColor.Gray;
-                C.WriteLine(a);
-                C.ResetColor();
-            }
-
-            else
-            {
-                C.ForegroundColor = ConsoleColor.Green;
-                C.WriteLine(a);
-                C.ResetColor();
-            }
-
-        }
-
     }
 
 }

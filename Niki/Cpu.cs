@@ -1,9 +1,6 @@
 ﻿
-using Computers1;
-using Computers11;
 using System;
-using Computers8;
-namespace Computers4
+namespace Computers
 {
 
     class Cpu
@@ -12,11 +9,11 @@ namespace Computers4
 
         private readonly RamMemory ram;
 
-        private readonly HardDriver videoCard;
+        private readonly VideoCard videoCard;
 
         static readonly Random Random = new Random();
 
-        internal Cpu(byte numberOfCores, byte numberOfBits, RamMemory ram, HardDriver videoCard)
+        internal Cpu(byte numberOfCores, byte numberOfBits, RamMemory ram, VideoCard videoCard)
         {
             this.numberOfBits = numberOfBits;
             this.ram = ram;
@@ -88,12 +85,12 @@ namespace Computers4
         }
     }
 
-    class Laptop
-    {
-        private static void Main()
-        {
-            Computers computers = new Computers();
-            Computers.main();
-        }
-    }
+    //class Laptop
+    //{
+    //    private static void Main()
+    //    {
+    //        Computers computers = new Computers();
+    //        Computers.main();
+    //    }
+    //}
 }
