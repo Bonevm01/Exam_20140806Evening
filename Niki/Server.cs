@@ -1,6 +1,6 @@
 ﻿namespace Computers
 {
-    internal class Server : AbstractComputer
+    internal class Server : Computer
     {
         public Server(MotherBoard motherBoard, IHardDrive hardDrives)
             : base(motherBoard, hardDrives)

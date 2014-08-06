@@ -8,19 +8,20 @@
         public static void Main()
         {
             var manufacturerName = Console.ReadLine();
-
             Manifacturer computerProducer;
-            if (manufacturerName == "HP")
+            switch (manufacturerName)
             {
-                computerProducer = new HP();
-            }
-            else if (manufacturerName == "Dell")
-            {
-                computerProducer = new Dell();
-            }
-            else
-            {
-                throw new InvalidArgumentException("Invalid manufacturer!");
+                case "HP":
+                    computerProducer = new HP();
+                    break;
+                case "Dell":
+                    computerProducer = new Dell();
+                    break;
+                case "Lenovo":
+                    computerProducer = new Lenovo();
+                    break;
+                default:
+                    throw new InvalidArgumentException("Invalid manufacturer!");
             }
 
             var laptop = computerProducer.ProduceLaptop();

@@ -22,7 +22,7 @@
             {
                 throw new SmallNumberException("The random umber is too small");
             }
-            else if ((this.numberOfBits == 32 && data > 500) || (this.numberOfBits == 64 && data > 1000))
+            else if ((this.numberOfBits == 32 && data > 500) || (this.numberOfBits == 64 && data > 1000) || (this.numberOfBits == 128 && data > 2000))
             {
                 throw new BigNumbersException("The random number is too high");
             }

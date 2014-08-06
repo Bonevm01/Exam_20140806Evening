@@ -1,6 +1,6 @@
 ﻿namespace Computers
 {
-    internal class HP : Manifacturer
+    public class HP : Manifacturer
     {
         public HP()
         {

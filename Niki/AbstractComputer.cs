@@ -1,8 +1,8 @@
 ﻿namespace Computers
 {
-    internal abstract class AbstractComputer
+    internal abstract class Computer
     {
-        public AbstractComputer(MotherBoard motherBoard, IHardDrive hardDrives)
+        public Computer(MotherBoard motherBoard, IHardDrive hardDrives)
         {
             this.MotherBoard = motherBoard;
             this.HardDrives = hardDrives;

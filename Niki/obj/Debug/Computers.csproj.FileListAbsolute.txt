@@ -1,0 +1,6 @@
+D:\Misho\Telerik\HighQualityCode\59.Exam_20140806Evening\Exam_20140806Evening\Niki\bin\Debug\Computers.UI.Console.exe.config
+D:\Misho\Telerik\HighQualityCode\59.Exam_20140806Evening\Exam_20140806Evening\Niki\bin\Debug\Computers.UI.Console.exe
+D:\Misho\Telerik\HighQualityCode\59.Exam_20140806Evening\Exam_20140806Evening\Niki\bin\Debug\Computers.UI.Console.pdb
+D:\Misho\Telerik\HighQualityCode\59.Exam_20140806Evening\Exam_20140806Evening\Niki\bin\Debug\System.Collections.Generic.dll
+D:\Misho\Telerik\HighQualityCode\59.Exam_20140806Evening\Exam_20140806Evening\Niki\obj\Debug\Computers.UI.Console.exe
+D:\Misho\Telerik\HighQualityCode\59.Exam_20140806Evening\Exam_20140806Evening\Niki\obj\Debug\Computers.UI.Console.pdb

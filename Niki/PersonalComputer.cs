@@ -1,6 +1,6 @@
 ﻿namespace Computers
 {
-    internal class PersonalComputer : AbstractComputer
+    internal class PersonalComputer : Computer
     {
         public PersonalComputer(MotherBoard motherBoard, IHardDrive hardDrives)
             : base(motherBoard, hardDrives)
